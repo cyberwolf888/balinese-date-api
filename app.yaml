@@ -1,5 +1,9 @@
-runtime: nodejs18 # or a suitable Node.js version
+runtime: nodejs20
+
+service: balinese-date-api # Specify the service name
 
 handlers:
   - url: /.*
     script: auto
+
+entrypoint: ./entrypoint.sh # Use your custom start script
