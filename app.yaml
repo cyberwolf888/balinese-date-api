@@ -1,0 +1,5 @@
+runtime: nodejs18 # or a suitable Node.js version
+
+handlers:
+  - url: /.*
+    script: auto
