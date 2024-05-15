@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
-    "build": "npx tsc",
+    "build": "tsc -p .",
+    "deploy": "gcloud app deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,7 +14,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.12.1",
     "balinese-date-js-lib": "^0.4.3",
     "eslint": "^9.2.0",
     "nodemon": "^3.1.0",

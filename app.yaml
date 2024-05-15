@@ -6,4 +6,7 @@ handlers:
   - url: /.*
     script: auto
 
-entrypoint: ./entrypoint.sh # Use your custom start script
+automatic_scaling:
+  max_instances: 1
+
+#entrypoint: ./entrypoint.sh # Use your custom start script
