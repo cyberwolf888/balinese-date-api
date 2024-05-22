@@ -1,5 +1,5 @@
 import createResponse from "../util/response";
-import {getCurrent, getFullMonth} from "../controllers/sasih-info-controller";
+import {getCurrent, getFullMonth, getFullYear} from "../controllers/sasih-info-controller";
 
 const routes = async (fastify: any, options: any) => {
     const currentDateTime = new Date();
@@ -22,11 +22,23 @@ const routes = async (fastify: any, options: any) => {
         }
         //create date object with current year and bulan and date is 1
         const date = new Date(currentYear, bulan - 1, 1);
-        console.log(date.toISOString());
+        // console.log(date.toISOString());
         // console.log(currentYear, bulan, date.getMonth());
         const data = await getFullMonth(date);
         return createResponse(data, 200, "Data berhasil ditemukan");
     });
+
+
+    fastify.get('/tahun/:tahun', async (request: any, reply: any) => {
+        const tahun = parseInt(request.params.tahun);
+        if (isNaN(tahun)) {
+            return { error: "Tahun harus berupa angka" };
+        }
+        const data = await getFullYear(tahun);
+        return createResponse(data, 200, "Data berhasil ditemukan");
+
+    });
+
 
 
 }

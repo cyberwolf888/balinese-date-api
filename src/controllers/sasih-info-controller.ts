@@ -12,11 +12,11 @@ export const getCurrent = async (date: Date) => {
 
 export const getFullMonth = async (date: Date) => {
     const currentDateTime = date || new Date();
-    console.log(currentDateTime.toISOString());
+    // console.log(currentDateTime.toISOString());
     //foreach day in month
-    const days = [];
+    const days: object[] = [];
     const totalDays = new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), 0).getDate();
-    console.log(totalDays);
+    // console.log(totalDays);
     for (let i = 1; i <= totalDays; i++) {
         const day = new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), i);
         // console.log(day.toISOString());
@@ -39,7 +39,16 @@ export const getFullMonth = async (date: Date) => {
 
 }
 
-export const getFullYear = async (date: Date) => {
 
+export const getFullYear = async (year: number) => {
+    const currentYear:number = year || new Date().getFullYear();
+    const months: object[] = [];
+    for (let i = 0; i < 12; i++) {
+        const date = new Date(currentYear, i, 1);
+        const data = await getFullMonth(date);
+        data.forEach((day: object) => months.push(day));
+    }
+
+    return months;
 }
 
